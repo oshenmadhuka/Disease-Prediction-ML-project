@@ -15,6 +15,10 @@ CORS(app)  # Allow all origins
 
 model = joblib.load('model/rf.pkl')
 
+@app.route('/')
+def home():
+    return "Welcome to the Disease Prediction API!"
+
 @app.route('/symptoms', methods=['GET'])
 def symptomDetails():
     file_path = 'db/symptoms.json'
