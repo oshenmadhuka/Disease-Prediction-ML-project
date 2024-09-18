@@ -1,5 +1,5 @@
 // API Configuration
-const BASE_URL = 'http://localhost:5000';
+const BASE_URL = 'http://localhost:8000';
 
 export const API_ENDPOINTS = {
     SYMPTOMS: `${BASE_URL}/symptoms`,
