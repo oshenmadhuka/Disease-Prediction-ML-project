@@ -70,6 +70,4 @@ jobs:
         with:
           app-name: 'Disease-Prediction-Backend'
           slot-name: 'Production'
-          startup-command: 'gunicorn --bind=0.0.0.0 --timeout 600 server:app'
-          working-directory: Back-End-Flask
-
+          startup-command: 'gunicorn --bind=0.0.0.0:$PORT --timeout 600 Back-End-Flask.server:app'
