@@ -71,4 +71,5 @@ jobs:
           app-name: 'Disease-Prediction-Backend'
           slot-name: 'Production'
           working-directory: Back-End-Flask
-          startup-command: 'waitress-serve --port=8000 server:app'
+          startup-command: 'gunicorn --bind=0.0.0.0 --timeout 600 server:app'
+
