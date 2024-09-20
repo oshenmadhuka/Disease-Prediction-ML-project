@@ -20,7 +20,7 @@ jobs:
       - name: Set up Python version
         uses: actions/setup-python@v5
         with:
-          python-version: '3.12'
+          python-version: '3.11'
 
       - name: Create and start virtual environment
         run: |
@@ -28,7 +28,7 @@ jobs:
           source venv/bin/activate
       
       - name: Install dependencies
-        run: pip install -r Back-End-Flask/requirements.txt
+        run: pip install -r requirements.txt
         
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
 
@@ -65,9 +65,9 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_DD8CCEA76DD243B1A830DE75247A6C3D }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_33B15FE4E7DA41D782B95E8301D33ED4 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_A181C2F84B42409DADB346975617715C }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_4E9B3C6B1D84448E8BFBAE122D49C9A1 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_130C0DB800EE4FD7A5325C6F4AD2B175 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_0DA4E57F2CE842C7A6A0F9479075FB56 }}
 
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v3
