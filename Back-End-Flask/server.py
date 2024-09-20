@@ -11,7 +11,7 @@ from dotenv import load_dotenv
 import os
 
 app = Flask(__name__)
-CORS(app)  # Allow all origins
+CORS(app)  # Allow all origin
 
 model = joblib.load('model/rf.pkl')
 
@@ -95,7 +95,7 @@ def getPredictions():
 # Google maps API
 # def miles_to_meter(miles):
 #     try:
-#         return miles * 1_609.344
+#         return miles * 1_609.
 #     except:
 #         return 0
 
@@ -145,4 +145,4 @@ def getPredictions():
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=8000)
+    app.run(host='0.0.0.0', port=8000)  
