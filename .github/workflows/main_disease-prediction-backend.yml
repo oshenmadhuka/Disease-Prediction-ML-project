@@ -71,5 +71,5 @@ jobs:
           app-name: 'Disease-Prediction-Backend'
           slot-name: 'Production'
           startup-command: 'gunicorn --bind=0.0.0.0 --timeout 600 server:app'
-        working-directory: Back-End-Flask
+          working-directory: Back-End-Flask
 
