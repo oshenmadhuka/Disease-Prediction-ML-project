@@ -13,7 +13,16 @@ import os
 app = Flask(__name__)
 CORS(app)  # Allow all origin
 
-model = joblib.load('model/rf.pkl')
+# Load all models and Encoders
+# model = joblib.load('model/rf.pkl')
+dosha_model = joblib.load('model/Dosha/Dosha_Prediction_Model.pkl')
+risk_model = joblib.load('model/Risk/Risk_Prediction_Model.pkl')
+medicine_model = joblib.load('model/Medicine/Medicine_Prediction_Model.pkl')
+
+# Load encoders if needed 
+dosha_encoder = joblib.load('model/Dosha/Dosha_LabelEncoder.pkl')
+risk_encoder = joblib.load('model/Risk/Risk_LabelEncoder.pkl')
+medicine_encoder = joblib.load('model/Medicine/Medicine_LabelEncoder.pkl')
 
 @app.route('/')
 def home():
@@ -21,7 +30,7 @@ def home():
 
 @app.route('/symptoms', methods=['GET'])
 def symptomDetails():
-    file_path = 'db/symptoms.json'
+    file_path = 'db/symptomsnew.json'
     with open(file_path, 'r') as symptom_json:
         symptoms = json.load(symptom_json)
     return jsonify(symptoms)
@@ -33,7 +42,7 @@ def symptomSearch():
     if 'search_key' in request_data:
         search_key = request_data['search_key'].lower()
 
-        file_path = 'db/symptoms.json'
+        file_path = 'db/symptomsnew.json'
         with open(file_path, 'r') as symptom_json:
             symptoms = json.load(symptom_json)
 
@@ -67,31 +76,79 @@ def saveFeedback():
 
     return jsonify({'message': 'Feedback saved successfully.'}), 200
 
-@app.route('/predict', methods=['POST'])
-def getPredictions():
-    num_features = model.n_features_in_
+# @app.route('/predict', methods=['POST'])
+# def getPredictions():
+#     num_features = model.n_features_in_
+#     custom_array = np.zeros(num_features)
+#     symptom_ids = [int(x) for x in request.json['ids']]
+
+#     for id in symptom_ids:
+#         custom_array[id] = 1
+    
+#     prob = model.predict_proba([custom_array])[0]
+#     prediction_classes = model.classes_
+    
+#     threshold = 0.01
+#     predictions_with_prob = [{'disease': label, 'probability': float(probability)} for label, probability in zip(prediction_classes, prob) if probability > threshold]
+    
+#     predictions_with_prob = sorted(
+#         predictions_with_prob,
+#         key=lambda x: x['probability'],
+#         reverse=True
+#     )
+
+#     response = predictions_with_prob
+    
+#     return jsonify(response), 200
+
+
+# Route for Dosha Prediction
+@app.route('/predict/dosha', methods=['POST'])
+def predictDosha():
+    num_features = dosha_model.n_features_in_
     custom_array = np.zeros(num_features)
     symptom_ids = [int(x) for x in request.json['ids']]
 
     for id in symptom_ids:
         custom_array[id] = 1
-    
-    prob = model.predict_proba([custom_array])[0]
-    prediction_classes = model.classes_
-    
-    threshold = 0.01
-    predictions_with_prob = [{'disease': label, 'probability': float(probability)} for label, probability in zip(prediction_classes, prob) if probability > threshold]
-    
-    predictions_with_prob = sorted(
-        predictions_with_prob,
-        key=lambda x: x['probability'],
-        reverse=True
-    )
 
-    response = predictions_with_prob
-    
-    return jsonify(response), 200
+    # Make prediction and decode result
+    dosha_prediction = dosha_model.predict([custom_array])[0]
+    dosha_label = dosha_encoder.inverse_transform([dosha_prediction])[0]
 
+    return jsonify({'dosha': dosha_label}), 200
+
+# Route for Risk Prediction
+@app.route('/predict/risk', methods=['POST'])
+def predictRisk():
+    num_features = risk_model.n_features_in_
+    custom_array = np.zeros(num_features)
+    symptom_ids = [int(x) for x in request.json['ids']]
+
+    for id in symptom_ids:
+        custom_array[id] = 1
+
+    # Make prediction and decode result
+    risk_prediction = risk_model.predict([custom_array])[0]
+    risk_label = risk_encoder.inverse_transform([risk_prediction])[0]
+
+    return jsonify({'risk': risk_label}), 200
+
+# Route for Medicine Prediction
+@app.route('/predict/medicine', methods=['POST'])
+def predictMedicine():
+    num_features = medicine_model.n_features_in_
+    custom_array = np.zeros(num_features)
+    symptom_ids = [int(x) for x in request.json['ids']]
+
+    for id in symptom_ids:
+        custom_array[id] = 1
+
+    # Make prediction and decode result
+    medicine_prediction = medicine_model.predict([custom_array])[0]
+    medicine_label = medicine_encoder.inverse_transform([medicine_prediction])[0]
+
+    return jsonify({'medicine': medicine_label}), 200
 # Google maps API
 # def miles_to_meter(miles):
 #     try:

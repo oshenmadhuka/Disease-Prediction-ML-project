@@ -16,7 +16,7 @@ jobs:
       - name: Set up Python version
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: '3.12'
 
       - name: Create and start virtual environment
         run: |
@@ -70,4 +70,4 @@ jobs:
         with:
           app-name: 'Disease-Prediction-Backend'
           slot-name: 'Production'
-          startup-command: 'gunicorn --bind=0.0.0.0 --timeout 600 server:app'
+          startup-command: 'gunicorn --bind=0.0.0.0:$PORT --timeout 600 Back-End-Flask.server:app'
