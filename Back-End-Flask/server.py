@@ -21,7 +21,7 @@ def home():
 
 @app.route('/symptoms', methods=['GET'])
 def symptomDetails():
-    file_path = 'db/symptoms.json'
+    file_path = 'db/symptomsnew.json'
     with open(file_path, 'r') as symptom_json:
         symptoms = json.load(symptom_json)
     return jsonify(symptoms)
@@ -33,7 +33,7 @@ def symptomSearch():
     if 'search_key' in request_data:
         search_key = request_data['search_key'].lower()
 
-        file_path = 'db/symptoms.json'
+        file_path = 'db/symptomsnew.json'
         with open(file_path, 'r') as symptom_json:
             symptoms = json.load(symptom_json)
 
