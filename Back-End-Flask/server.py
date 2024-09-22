@@ -14,7 +14,7 @@ app = Flask(__name__)
 CORS(app)  # Allow all origin
 
 # Load all models and Encoders
-model = joblib.load('model/rf.pkl')
+# model = joblib.load('model/rf.pkl')
 dosha_model = joblib.load('model/Dosha/Dosha_Prediction_Model.pkl')
 risk_model = joblib.load('model/Risk/Risk_Prediction_Model.pkl')
 medicine_model = joblib.load('model/Medicine/Medicine_Prediction_Model.pkl')
@@ -76,30 +76,30 @@ def saveFeedback():
 
     return jsonify({'message': 'Feedback saved successfully.'}), 200
 
-@app.route('/predict', methods=['POST'])
-def getPredictions():
-    num_features = model.n_features_in_
-    custom_array = np.zeros(num_features)
-    symptom_ids = [int(x) for x in request.json['ids']]
+# @app.route('/predict', methods=['POST'])
+# def getPredictions():
+#     num_features = model.n_features_in_
+#     custom_array = np.zeros(num_features)
+#     symptom_ids = [int(x) for x in request.json['ids']]
 
-    for id in symptom_ids:
-        custom_array[id] = 1
+#     for id in symptom_ids:
+#         custom_array[id] = 1
     
-    prob = model.predict_proba([custom_array])[0]
-    prediction_classes = model.classes_
+#     prob = model.predict_proba([custom_array])[0]
+#     prediction_classes = model.classes_
     
-    threshold = 0.01
-    predictions_with_prob = [{'disease': label, 'probability': float(probability)} for label, probability in zip(prediction_classes, prob) if probability > threshold]
+#     threshold = 0.01
+#     predictions_with_prob = [{'disease': label, 'probability': float(probability)} for label, probability in zip(prediction_classes, prob) if probability > threshold]
     
-    predictions_with_prob = sorted(
-        predictions_with_prob,
-        key=lambda x: x['probability'],
-        reverse=True
-    )
+#     predictions_with_prob = sorted(
+#         predictions_with_prob,
+#         key=lambda x: x['probability'],
+#         reverse=True
+#     )
 
-    response = predictions_with_prob
+#     response = predictions_with_prob
     
-    return jsonify(response), 200
+#     return jsonify(response), 200
 
 
 # Route for Dosha Prediction
