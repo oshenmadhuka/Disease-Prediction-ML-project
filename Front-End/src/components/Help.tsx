@@ -6,7 +6,7 @@ function Help() {
                     <div className="jumbotron">
                         <h1 className="display-4">Any Questions?</h1>
                         <p className="lead">Send an email to the developer.</p>
-                        <button type="button"  onClick={() => window.open('mailto:dilandevv@gmail.com', '_blank')} className="btn btn-success">
+                        <button type="button"  onClick={() => window.open('mailto:janusha68@gmail.com', '_blank')} className="btn btn-success">
                             <span>&nbsp;</span>
                             <span>&nbsp;</span>✉️ Send Email<span>&nbsp;</span>
                             <span>&nbsp;</span>
