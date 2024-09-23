@@ -27,8 +27,11 @@ const Navbar = () => {
               <a className="nav-link" href="/">Disease Prediction</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/medical-centers">Medical Centers</a>
+              <a className="nav-link" href="https://sinhalabehethbadu.lk/contact-a-doctor/#colombo" target="_blank" rel="noopener noreferrer">
+                 Medical Centers
+              </a>
             </li>
+
             <li className="nav-item">
               <a className="nav-link" href="/help">Help</a>
             </li>
