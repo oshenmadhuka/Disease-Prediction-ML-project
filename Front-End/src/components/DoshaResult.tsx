@@ -1,12 +1,11 @@
 interface DoshaProps {
-    id: number;
     dosha: string;
   }
   
-  const DoshaResult: React.FC<DoshaProps> = ({ id, dosha }) => {
+  const DoshaResult: React.FC<DoshaProps> = ({ dosha }) => {
     return (
       <>
-        <p>{`${id}. Dosha: ${dosha}`}</p>
+        <p>{` Dosha: ${dosha}`}</p>
       </>
     );
   };

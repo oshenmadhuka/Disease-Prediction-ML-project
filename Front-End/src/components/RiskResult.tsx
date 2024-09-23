@@ -1,15 +1,30 @@
+import React from 'react';
+
 interface RiskProps {
-    id: number;
-    risk: string;
-  }
+  risk: string;
+}
+
+const RiskResult: React.FC<RiskProps> = ({ risk }) => {
   
-  const RiskResult: React.FC<RiskProps> = ({ id, risk }) => {
-    return (
-      <>
-        <p>{`${id}. Risk: ${risk}`}</p>
-      </>
-    );
+  // Function to determine the border color based on the risk level
+  const getBorderColor = (risk: string) => {
+    switch (risk) {
+      case 'High':
+        return 'border-danger'; // Bootstrap class for red border
+      case 'Medium':
+        return 'border-warning'; // Bootstrap class for yellow border
+      case 'Low':
+        return 'border-success'; // Bootstrap class for green border
+      default:
+        return 'border-secondary'; // Default border color (gray)
+    }
   };
-  
-  export default RiskResult;
-  
+
+  return (
+    <div className={`p-3 mb-3 border ${getBorderColor(risk)}`} style={{ borderWidth: '2px', borderRadius: '5px' }}>
+      <p>{`Risk: ${risk}`}</p>
+    </div>
+  );
+};
+
+export default RiskResult;
