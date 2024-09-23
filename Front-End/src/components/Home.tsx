@@ -167,7 +167,7 @@ const Home = () => {
             <div className="col-md-12 unit form-control mt-3">
               <p className="card-heading">Dosha Results</p>
               {doshaResults.map((d, index) => (
-                <DoshaResult key={index + 1} id={index + 1} dosha={d.dosha} />
+                <DoshaResult key={index + 1}  dosha={d.dosha} />
               ))}
             </div>
           )}
@@ -176,7 +176,7 @@ const Home = () => {
             <div className="col-md-12 unit form-control mt-3">
               <p className="card-heading">Risk Results</p>
               {riskResults.map((r, index) => (
-                <RiskResult key={index + 1} id={index + 1} risk={r.risk} />
+                <RiskResult key={index + 1}  risk={r.risk} />
               ))}
             </div>
           )}
@@ -185,7 +185,7 @@ const Home = () => {
             <div className="col-md-12 unit form-control mt-3">
               <p className="card-heading">Medicine Results</p>
               {medicineResults.map((m, index) => (
-                <MedicineResult key={index + 1} id={index + 1} medicine={m.medicine} />
+                <MedicineResult key={index + 1}  medicine={m.medicine} />
               ))}
             </div>
           )}
