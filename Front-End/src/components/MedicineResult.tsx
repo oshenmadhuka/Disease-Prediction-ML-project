@@ -1,12 +1,11 @@
 interface MedicineProps {
-    id: number;
     medicine: string;
   }
   
-  const MedicineResult: React.FC<MedicineProps> = ({ id, medicine }) => {
+  const MedicineResult: React.FC<MedicineProps> = ({ medicine }) => {
     return (
       <>
-        <p>{`${id}. Medicine: ${medicine}`}</p>
+        <p>{` Medicine: ${medicine}`}</p>
       </>
     );
   };
