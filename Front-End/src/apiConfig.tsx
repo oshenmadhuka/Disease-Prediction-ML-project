@@ -9,6 +9,7 @@ export const API_ENDPOINTS = {
     MEDICAL_CENTERS: `${BASE_URL}/medicalcenters`,
 
      // New API endpoints for predictions
+     PREDICT_PROGNOSIS: `${BASE_URL}/predict/prognosis`,
      PREDICT_DOSHA: `${BASE_URL}/predict/dosha`,
      PREDICT_RISK: `${BASE_URL}/predict/risk`,
      PREDICT_MEDICINE: `${BASE_URL}/predict/medicine`,
