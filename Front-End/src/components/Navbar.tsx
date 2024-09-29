@@ -27,7 +27,7 @@ const Navbar = () => {
               <a className="nav-link" href="/">Disease Prediction</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/medical-centers">
+              <a className="nav-link" href="/medicalcenters">
                  Medical Centers
               </a>
             </li>
