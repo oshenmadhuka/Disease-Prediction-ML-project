@@ -22,7 +22,7 @@ const RiskResult: React.FC<RiskProps> = ({ risk }) => {
 
   return (
     <div className={`p-3 mb-3 border ${getBorderColor(risk)}`} style={{ borderWidth: '2px', borderRadius: '5px' }}>
-      <p>{`Risk: ${risk}`}</p>
+      <p>{`${risk}`}</p>
     </div>
   );
 };
