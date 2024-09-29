@@ -4,6 +4,7 @@ import Home from './components/Home';
 import Help from './components/Help';
 import Feedback from './components/Feedback';
 import MedicalCenter from './components/MedicalCenter';
+import MedicalCenters from './components/medical_centers';
 
 function App() {
   return (
@@ -12,7 +13,7 @@ function App() {
         <Navbar />
         <div className="content">
           <Routes>
-            <Route path="/medical-centers" element={<MedicalCenter />} />
+            <Route path="/medical-centers" element={<MedicalCenters />} />
             <Route path="/help" element={<Help />} />
             <Route path="/feedback" element={<Feedback />} />
             <Route path="/" element={<Home />} />
