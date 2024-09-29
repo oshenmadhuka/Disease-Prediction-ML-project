@@ -22,7 +22,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18.x' # Specify the Node.js version
+          node-version: '18.18' # Specify the Node.js version
 
       - name: Install dependencies
         working-directory: ./Front-End # Change if package.json is in another directory
@@ -40,7 +40,7 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: "upload"
           app_location: "./Front-End"  # App source code path
-          output_location: "dist"      # Built app content directory
+          # Built app content directory
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
