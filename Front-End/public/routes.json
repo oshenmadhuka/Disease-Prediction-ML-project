@@ -1,0 +1,21 @@
+{
+    "routes": [
+      {
+        "route": "/medical-centers",
+        "rewrite": "/index.html"
+      },
+      {
+        "route": "/help",
+        "rewrite": "/index.html"
+      },
+      {
+        "route": "/feedback",
+        "rewrite": "/index.html"
+      },
+      {
+        "route": "/",
+        "rewrite": "/index.html"
+      }
+    ]
+  }
+  
