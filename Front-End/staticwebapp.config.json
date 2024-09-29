@@ -15,10 +15,6 @@
       {
         "route": "/feedback",
         "rewrite": "/index.html"
-      },
-      {
-        "route": "/*",  
-        "rewrite": "/index.html"
       }
     ]
   }
