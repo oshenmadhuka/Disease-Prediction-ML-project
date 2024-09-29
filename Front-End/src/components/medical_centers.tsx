@@ -1,7 +1,21 @@
 import React from 'react';
+import "../App.css"
+
+// Define the doctor type
+type Doctor = {
+  name: string;
+  center: string;
+  address: string;
+  phone: string | null; // Allow phone to be null
+};
+
+// Define the type for doctorsByDistrict with dynamic keys
+type DoctorsByDistrict = {
+  [district: string]: Doctor[]; // District is the key, array of doctors is the value
+};
 
 // Array of doctors categorized by district
-const doctorsByDistrict = {
+const doctorsByDistrict: DoctorsByDistrict ={
     Colombo: [
       { name: 'Dr K A D Keeshani Randima', center: 'Ayurdhara Ayurwedic Medical Center', address: 'No. 102G Bangalawata, Kothalawala, Kaduwela', phone: '0771383439 / 0717883439' },
       { name: 'Dr. Manaram Perera', center: 'Ayurwedic Medical Center', address: 'No 7, Koralawella Rd, Moratuwa', phone: '0777073354' },
@@ -90,15 +104,15 @@ const doctorsByDistrict = {
 
   function MedicalCenters() {
     return (
-      <div style={styles.mainContainer}> {/* Use mainContainer for overall styling */}
-        <div style={styles.container}>
+      <div className="med-centers-container">
+        <div className="med-centers-content">
           <h1>Find a Sinhala Ayurvedic doctor near you</h1>
           <p>Click on the below links to choose your district and get information about the Ayurvedic doctors near you:</p>
-          
-          <ul style={styles.navList}>
+  
+          <ul className="med-centers-nav-list">
             {Object.keys(doctorsByDistrict).map((district) => (
               <li key={district}>
-                <a href={`#${district.toLowerCase()}`} style={styles.navLink}>
+                <a href={`#${district.toLowerCase()}`} className="med-centers-nav-link">
                   {district}
                 </a>
               </li>
@@ -106,18 +120,18 @@ const doctorsByDistrict = {
           </ul>
   
           {Object.keys(doctorsByDistrict).map((district) => (
-            <div key={district} id={district.toLowerCase()} style={styles.districtSection}>
+            <div key={district} id={district.toLowerCase()} className="med-centers-district-section">
               <h2>{district}</h2>
               <p>List of Sinhala Ayurvedic doctors in {district} District:</p>
-              <div style={styles.gridWrapper}>
+              <div className="med-centers-grid-wrapper">
                 {doctorsByDistrict[district].map((doctor, index) => (
-                  <div key={index} style={styles.gridColumn}>
-                    <div style={styles.card}>
+                  <div key={index} className="med-centers-grid-column">
+                    <div className="med-centers-card">
                       <p>
                         <strong>{doctor.name}</strong><br />
                         {doctor.center}<br />
                         {doctor.address}<br />
-                        <a href={`tel:${doctor.phone}`} style={styles.phoneLink}>
+                        <a href={`tel:${doctor.phone}`} className="med-centers-phone-link">
                           {doctor.phone}
                         </a>
                       </p>
@@ -131,77 +145,6 @@ const doctorsByDistrict = {
       </div>
     );
   }
-  
-  // Inline styles for the component
-  const styles = {
-    mainContainer: {
-      padding: '100px', // Default padding for large windows
-      paddingTop: '20px',
-      fontFamily: 'Arial, sans-serif',
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'center',
-      alignItems: 'center',
-      minHeight: '100vh',
-  
-      // Media queries
-      '@media (max-width: 768px)': {
-        padding: '0px', // Smaller padding for smaller screens (like tablets or mobile)
-      },
-    },
-  
-    container: {
-      padding: '20px',
-      fontFamily: 'Arial, sans-serif',
-      alignItems: 'center',
-    },
-  
-    navList: {
-      listStyleType: 'none',
-      paddingLeft: 0,
-    },
-  
-    navLink: {
-      textDecoration: 'none',
-      color: '#007bff',
-      margin: '10px',
-      display: 'inline-block',
-    },
-  
-    districtSection: {
-      marginTop: '30px',
-    },
-  
-    gridWrapper: {
-      display: 'flex',
-      flexWrap: 'wrap',
-      gap: '20px',
-    },
-  
-    gridColumn: {
-      flex: '1 1 calc(33.333% - 20px)',
-      boxSizing: 'border-box',
-      display: 'flex',
-    },
-  
-    card: {
-      flex: '1',
-      border: '1px solid #ddd',
-      padding: '15px',
-      borderRadius: '8px',
-      boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
-      backgroundColor: '#fff',
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'space-between',
-      minHeight: '150px',
-    },
-  
-    phoneLink: {
-      color: '#007bff',
-      textDecoration: 'none',
-    },
-  };
   
   
 
