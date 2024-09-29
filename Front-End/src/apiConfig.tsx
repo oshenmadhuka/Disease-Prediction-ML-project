@@ -1,5 +1,5 @@
 // API Configuration
-const BASE_URL = 'http://localhost:8000';
+const BASE_URL = 'https://disease-prediction-backend-c0c6fyc0ctgph8ec.eastus-01.azurewebsites.net';
 
 export const API_ENDPOINTS = {
     SYMPTOMS: `${BASE_URL}/symptoms`,
