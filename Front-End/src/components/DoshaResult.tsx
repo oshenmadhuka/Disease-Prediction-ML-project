@@ -5,7 +5,7 @@ interface DoshaProps {
   const DoshaResult: React.FC<DoshaProps> = ({ dosha }) => {
     return (
       <>
-        <p>{` Dosha: ${dosha}`}</p>
+        <p>{`${dosha}`}</p>
       </>
     );
   };

@@ -5,7 +5,7 @@ interface MedicineProps {
   const MedicineResult: React.FC<MedicineProps> = ({ medicine }) => {
     return (
       <>
-        <p>{` Medicine: ${medicine}`}</p>
+        <p>{`${medicine}`}</p>
       </>
     );
   };
